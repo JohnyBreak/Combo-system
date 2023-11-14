@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 1549340563}
   - component: {fileID: 1549340564}
   - component: {fileID: 1549340565}
+  - component: {fileID: 1549340569}
   - component: {fileID: 1549340567}
   - component: {fileID: 1549340568}
   m_Layer: 0
@@ -792,6 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf7dea622a66244bbd4e61a137f454b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anim: {fileID: 1549340569}
   _speed: 5
 --- !u!114 &1549340564
 MonoBehaviour:
@@ -885,6 +887,20 @@ MonoBehaviour:
   _angle: 29.8
   _radius: 7.66
   _color: {r: 1, g: 0.07212793, b: 0, a: 0.3254902}
+--- !u!114 &1549340569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549340557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa50a1d88dc010488137e9d65557b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 408785239}
+  _smoothBlend: 0.1
 --- !u!1 &1549827213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf7dea622a66244bbd4e61a137f454b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anim: {fileID: 0}
   _speed: 5
 --- !u!1 &1568519205
 GameObject:

@@ -15,9 +15,12 @@ public class AttackSO : ScriptableObject
     [Tooltip("Normalized start time")]
     [Range(0, 1)] public float NormalizedTimeOffset = 0f;
 
-    [Header("Rootmotion settings")]
-    public AnimationCurve ForwardMovementCurve;
-    public Vector3 ForwardMovementDirection = Vector3.forward;
-    public float ForwardMovementDuration = 0.3f;
+    [Tooltip("Normalized start time")]
+    [Min(0.1f)] public float AnimSpeedMultiplier = 1f;
+
+    //[Header("Rootmotion settings")]
+    //public AnimationCurve ForwardMovementCurve;
+    //public Vector3 ForwardMovementDirection = Vector3.forward;
+    //public float ForwardMovementDuration = 0.3f;
 
 }

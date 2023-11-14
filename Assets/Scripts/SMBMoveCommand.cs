@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class AnimationMoveCommand : StateMachineBehaviour
+public class SMBMoveCommand : StateMachineBehaviour
 {
     [Header("Rootmotion settings")]
-    public AnimationCurve ForwardMovementCurve;
-    public float ForwardMovementDuration = 0.3f;
-    public Vector3 ForwardMovementDirection = Vector3.forward;
+    [SerializeField] private AnimationCurve _movementCurve = AnimationCurve.Linear(0,0,1,1);
+    [SerializeField] private float _movementDuration = 0.3f;
+    [SerializeField] private Vector3 _movementDirection = Vector3.forward;
     private Vector3 startPos;
     private Vector3 endPos;
     private Transform _player;
@@ -29,7 +25,7 @@ public class AnimationMoveCommand : StateMachineBehaviour
     {
         startPos = _player.position;
 
-        endPos = _player.position + (_player.forward * ForwardMovementDirection.z + _player.right * ForwardMovementDirection.x + _player.up * ForwardMovementDirection.y);
+        endPos = _player.position + (_player.forward * _movementDirection.z + _player.right * _movementDirection.x + _player.up * _movementDirection.y);
 
         _elapsedTime = 0;
         _move = true;
@@ -45,9 +41,9 @@ public class AnimationMoveCommand : StateMachineBehaviour
         if (!_move) return;
 
         _elapsedTime += Time.deltaTime;
-        float t = _elapsedTime / ForwardMovementDuration;
+        float t = _elapsedTime / _movementDuration;
 
-        float curveValue = ForwardMovementCurve.Evaluate(t);
+        float curveValue = _movementCurve.Evaluate(t);
 
         _player.localPosition = Vector3.Lerp(startPos, endPos, curveValue);
         animator.transform.position = _graphicParent.position;
