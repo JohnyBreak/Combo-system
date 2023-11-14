@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ab762e59e193b4c8b65356d91fef28, type: 3}
+  m_Name: AttackSO1
+  m_EditorClassIdentifier: 
+  Clip: {fileID: -4304836385353429653, guid: 4f2d00b64b239804fb07d21d9e10fa32, type: 3}
+  Damage: 2
+  NormalizedCrossFadeStartTime: 0.58
+  NormalizedCrossFadeDuration: 0.151
+  NormalizedTimeOffset: 0
+  ForwardMovementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ForwardMovementDirection: {x: 0, y: 0, z: 1}
+  ForwardMovementDuration: 0
