@@ -13,6 +13,7 @@ AnimatorState:
   m_Transitions: []
   m_StateMachineBehaviours:
   - {fileID: -838544753921036332}
+  - {fileID: -208146790781876525}
   - {fileID: -6954113774709637450}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -41,6 +42,7 @@ AnimatorState:
   m_Transitions: []
   m_StateMachineBehaviours:
   - {fileID: -1544571458553966224}
+  - {fileID: 3778452030344154993}
   - {fileID: -7873857685674668848}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -93,7 +95,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _movementDuration: 0.3
-  _movementDirection: {x: 0, y: 0, z: 1}
+  _movementDirection: {x: 0, y: 0, z: 0.5}
 --- !u!206 &-7741498334582825478
 BlendTree:
   m_ObjectHideFlags: 1
@@ -144,16 +146,25 @@ MonoBehaviour:
       time: 0
       value: 0
       inSlope: 0
-      outSlope: 1
-      tangentMode: 0
+      outSlope: 0.3542249
+      tangentMode: 69
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: 0.33113152
+      value: 0.11729503
+      inSlope: 0.3542249
+      outSlope: 1.3196988
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 1
-      outSlope: 0
+      outSlope: 1
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -162,7 +173,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _movementDuration: 0.3
-  _movementDirection: {x: 0, y: 0, z: 1}
+  _movementDirection: {x: 0, y: 0, z: 1.5}
 --- !u!114 &-6781365195948972228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,6 +242,7 @@ AnimatorState:
   m_Transitions: []
   m_StateMachineBehaviours:
   - {fileID: -3742031108163281770}
+  - {fileID: 7437043980324612069}
   - {fileID: 959154068968585162}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -309,6 +321,20 @@ BlendTree:
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!114 &-208146790781876525
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349b9200e610e1e4198370af3fe1854f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnTime: {x: 0, y: 0.06}
+  _skip: 0
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -323,19 +349,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Attack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AttackSpeedMultiplier
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -386,7 +412,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _movementDuration: 0.3
-  _movementDirection: {x: 0, y: 0, z: 1}
+  _movementDirection: {x: 0, y: 0, z: 0.5}
 --- !u!114 &2184091911144802712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -466,6 +492,20 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 7976251625725527383}
+--- !u!114 &3778452030344154993
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349b9200e610e1e4198370af3fe1854f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnTime: {x: 0, y: 0.06}
+  _skip: 0
 --- !u!1102 &4126485742732498123
 AnimatorState:
   serializedVersion: 6
@@ -561,6 +601,20 @@ MonoBehaviour:
   _elapsedTime: 0
   _move: 0
   _playerMovement: {fileID: 0}
+--- !u!114 &7437043980324612069
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349b9200e610e1e4198370af3fe1854f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnTime: {x: 0, y: 0.06}
+  _skip: 0
 --- !u!1102 &7976251625725527383
 AnimatorState:
   serializedVersion: 6

@@ -22,4 +22,8 @@ public class PlayerAnimations : MonoBehaviour
     {
         _animator.SetFloat(_movementSpeed, currentMovement, _smoothBlend, Time.deltaTime);
     }
+    public void SetMovementAnimationRaw(float currentMovement)
+    {
+        _animator.SetFloat(_movementSpeed, currentMovement);
+    }
 }
