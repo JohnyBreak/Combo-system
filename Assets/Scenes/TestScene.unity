@@ -862,11 +862,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12d9baa34890e941b28d47d51da529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 408785239}
   _attacks:
   - {fileID: 11400000, guid: d297bc599f61454438b979da79f5d137, type: 2}
   - {fileID: 11400000, guid: 3c3fe3acad6acc34e9f23daec5267def, type: 2}
   - {fileID: 11400000, guid: 1da6b7ea0f8202f42b5aba597a36df0d, type: 2}
+  _playerAnimations: {fileID: 1549340569}
 --- !u!114 &1549340568
 MonoBehaviour:
   m_ObjectHideFlags: 0

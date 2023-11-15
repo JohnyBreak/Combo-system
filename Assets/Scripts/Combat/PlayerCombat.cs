@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
+    //[SerializeField] private Animator _animator;
     [SerializeField] private List<AttackSO> _attacks;
-
+    [SerializeField] private PlayerAnimations _playerAnimations;
     private int _comboCounter;
-    private int _attackHash = Animator.StringToHash("Attack");
+    //private int _attackHash = Animator.StringToHash("Attack");
     private bool _shouldContinueCombo = false;
     private bool _attackInProcess = false;
 
@@ -38,11 +38,18 @@ public class PlayerCombat : MonoBehaviour
 
     private void Attack()
     {
-        _animator.StopPlayback();
-        _animator.CrossFade(_attacks[_comboCounter].Clip.name, 
+        _playerAnimations.CrossfadeAttackAnimation(_attacks[_comboCounter].Clip.name,
             _attacks[_comboCounter].NormalizedCrossFadeDuration,
-            0, 
-            _attacks[_comboCounter].NormalizedTimeOffset);
+            _attacks[_comboCounter].NormalizedTimeOffset, _attacks[_comboCounter].AnimSpeedMultiplier);
+
+        //_animator.StopPlayback();
+
+        //_animator.CrossFade(_attacks[_comboCounter].Clip.name, 
+        //    _attacks[_comboCounter].NormalizedCrossFadeDuration,
+        //    0, 
+        //    _attacks[_comboCounter].NormalizedTimeOffset);
+
+        //_playerAnimations.SetAttackSpeedMultiplier(_attacks[_comboCounter].AnimSpeedMultiplier);
 
         _attackInProcess = true;
         _shouldContinueCombo = false;
@@ -51,10 +58,10 @@ public class PlayerCombat : MonoBehaviour
     private void ContinueCombo()
     {
         if (!_attackInProcess) return;
-        if ((_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > _attacks[_comboCounter].NormalizedCrossFadeStartTime
-            && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.94f)
-            && _animator.GetCurrentAnimatorStateInfo(0).tagHash == _attackHash 
-            && !_animator.IsInTransition(0))
+        if ((_playerAnimations.GetCurrentStateNormalizedTime() > _attacks[_comboCounter].NormalizedCrossFadeStartTime
+            && _playerAnimations.GetCurrentStateNormalizedTime() < 0.94f)
+            && _playerAnimations.IsAttackState()
+            && !_playerAnimations.IsInTransition())
         {
             if (_shouldContinueCombo)
             {
@@ -68,18 +75,19 @@ public class PlayerCombat : MonoBehaviour
             }
         }
     }
-
+    // найти анин старый телефон
     private void ExitAttack()
     {
         if (!_attackInProcess) return;
         if (_shouldContinueCombo) return;
 
-        if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.94f
-            && _animator.GetCurrentAnimatorStateInfo(0).tagHash == _attackHash
-            && !_animator.IsInTransition(0))
+        if (_playerAnimations.GetCurrentStateNormalizedTime() > 0.94f
+            && _playerAnimations.IsAttackState()
+            && !_playerAnimations.IsInTransition())
         {
-            _animator.StopPlayback();
-            _animator.CrossFade("Blend Tree", 0.1f);
+            _playerAnimations.CrossfadeToMovementBlendTree();
+            //_animator.StopPlayback();
+            //_animator.CrossFade("Blend Tree", 0.1f);
             _comboCounter = 0;
             _attackInProcess = false;
             _shouldContinueCombo = false;
