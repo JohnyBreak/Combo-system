@@ -1,16 +1,16 @@
-using GD.MinMaxSlider;
+//using GD.MinMaxSlider;
 using UnityEngine;
 
 public class SMBEnableTurn : StateMachineBehaviour
 {
-    [Tooltip("Normalized time when player can turn")]
-    [MinMaxSlider(0, 1)] public Vector2 TurnTime;
+    //[Tooltip("Normalized time when player can turn")]
+    //[MinMaxSlider(0, 1)] public Vector2 TurnTime;
 
     private int _attackHash = Animator.StringToHash("Attack");
     private PlayerRotation _playerRotation;
-    private bool _shouldBlockTurn = true;
-    private bool _shouldLetTurn = true;
-    [SerializeField] private bool _skip = false;
+    //private bool _shouldBlockTurn = true;
+    //private bool _shouldLetTurn = true;
+    private bool _skip = false;
 
     public void SetPlayerRotation(PlayerRotation playerRotation) 
     {
@@ -18,7 +18,6 @@ public class SMBEnableTurn : StateMachineBehaviour
         
     }
     
-
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _skip = false;
@@ -49,7 +48,7 @@ public class SMBEnableTurn : StateMachineBehaviour
         if (_skip) return;
 
         _playerRotation.ToggleTurnOnAttackAnimation(true);
-        _shouldBlockTurn = true;
-        _shouldLetTurn = true;
+        //_shouldBlockTurn = true;
+        //_shouldLetTurn = true;
     }
 }

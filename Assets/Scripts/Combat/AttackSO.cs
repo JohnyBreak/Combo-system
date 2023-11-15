@@ -18,9 +18,9 @@ public class AttackSO : ScriptableObject
     [Tooltip("Normalized start time")]
     [Min(0.1f)] public float AnimSpeedMultiplier = 1f;
 
-    //[Header("Rootmotion settings")]
-    //public AnimationCurve ForwardMovementCurve;
-    //public Vector3 ForwardMovementDirection = Vector3.forward;
-    //public float ForwardMovementDuration = 0.3f;
+    [Header("Attack break settings")]
 
+    [Tooltip("Normalized start time")]
+    [Range(0, 1)] public float NaturalExitTime = .9f;
+    [Range(0, 1)] public float InputExitTime = .7f;
 }

@@ -60,14 +60,31 @@ public class PlayerAnimations : MonoBehaviour
         return _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 
-    public bool IsAttackState()
+    public AnimatorStateInfo GetNextAnimatorStateInfo()
+    {
+        return _animator.GetNextAnimatorStateInfo(0);
+    }
+
+    public AnimatorStateInfo GetCurrentAnimatorStateInfo()
+    {
+        return _animator.GetCurrentAnimatorStateInfo(0);
+    }
+
+    public bool InAttackState()
     {
         return _animator.GetCurrentAnimatorStateInfo(0).tagHash == _attackHash;
     }
+
+    public bool IsNextStateIsAttack()
+    {
+        return _animator.GetNextAnimatorStateInfo(0).tagHash == _attackHash;
+    }
+
     public bool IsInTransition()
     {
         return _animator.IsInTransition(0);
     }
+
     public void CrossfadeToMovementBlendTree(float normalizedCrossFadeDuration = 0.1f) 
     {
         _animator.StopPlayback();

@@ -17,11 +17,6 @@ MonoBehaviour:
   NormalizedCrossFadeStartTime: 0.58
   NormalizedCrossFadeDuration: 0.151
   NormalizedTimeOffset: 0.116
-  ForwardMovementCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ForwardMovementDirection: {x: 0, y: 0, z: 1}
-  ForwardMovementDuration: 0
+  AnimSpeedMultiplier: 1
+  NaturalExitTime: 0.9
+  InputExitTime: 0.831
