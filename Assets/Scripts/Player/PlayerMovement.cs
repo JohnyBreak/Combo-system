@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed = 5;
 
     private bool _canMove = true;
-    private Vector3 direction;
+    //private Vector3 _direction;
 
     private void Awake()
     {
@@ -25,10 +25,26 @@ public class PlayerMovement : MonoBehaviour
         if(!_canMove) _anim.SetMovementAnimationRaw(0);
     }
 
-    private void Update()
-    {
-        direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+    //private void Update()
+    //{
+    //    direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         
+    //    if (!_canMove) return;
+
+    //    if (direction != Vector3.zero)
+    //    {
+    //        transform.position += direction.normalized * Time.deltaTime * _speed;
+
+    //        _anim.SetMovementAnimation(1);
+    //        return;
+    //    }
+    //    _anim.SetMovementAnimation(0);
+    //}
+
+    public void Move(Vector3 direction)
+    {
+        //_direction = direction;//new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
         if (!_canMove) return;
 
         if (direction != Vector3.zero)

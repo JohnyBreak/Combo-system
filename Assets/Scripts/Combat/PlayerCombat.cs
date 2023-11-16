@@ -15,23 +15,38 @@ public class PlayerCombat : MonoBehaviour
         ContinueCombo();
 
         ExitAttack();
-        if (_shouldContinueCombo) return;
+        //if (_shouldContinueCombo) return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        //if (Input.GetKeyDown(KeyCode.Mouse0))
+        //{
+        //    if (!_attackInProcess)
+        //    {
+        //        Attack();
+        //        return;
+        //    }
+
+        //    if (_attackInProcess && _comboCounter < _attacks.Count - 1)
+        //    {
+        //        _shouldContinueCombo = true;
+        //        return;
+        //    }
+        //}
+
+    }
+
+    public void TryAttack() 
+    {
+        if (!_attackInProcess)
         {
-            if (!_attackInProcess)
-            {
-                Attack();
-                return;
-            }
-
-            if (_attackInProcess && _comboCounter < _attacks.Count - 1)
-            {
-                _shouldContinueCombo = true;
-                return;
-            }
+            Attack();
+            return;
         }
 
+        if (_attackInProcess && _comboCounter < _attacks.Count - 1)
+        {
+            _shouldContinueCombo = true;
+            return;
+        }
     }
 
     private void Attack()
