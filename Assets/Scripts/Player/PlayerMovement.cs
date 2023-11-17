@@ -2,21 +2,34 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerAnimations _anim;
+    [SerializeField] private PlayerAnimations _anim;
     [SerializeField] private float _speed = 5;
-
+    [SerializeField] private float _rotationSpeed = 1080f;
     private bool _canMove = true;
     //private Vector3 _direction;
-
-    private void Awake()
+    private PlayerInput _input;
+    
+    public void SetInput(PlayerInput playerInput) 
     {
-        var behs = GetComponentInChildren<Animator>().GetBehaviours<SMBBlockMoveInput>();
+        _input = playerInput;
+        _input.ToggleMovementEvent += ToggleMovementOnAttackAnimation;
+    }
 
-        foreach (var beh in behs)
-        {
-            beh.SetPlayerMovement(this);
-        }
+    //private void Awake()
+    //{
+
+
+    //    var behs = GetComponentInChildren<Animator>().GetBehaviours<SMBBlockMoveInput>();
+
+    //    foreach (var beh in behs)
+    //    {
+    //        beh.SetPlayerMovement(this);
+    //    }
+    //}
+
+    private void OnDestroy()
+    {
+        _input.ToggleMovementEvent -= ToggleMovementOnAttackAnimation;
     }
 
     public void ToggleMovementOnAttackAnimation(bool canMove)
@@ -49,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (direction != Vector3.zero)
         {
+            Quaternion toRotate = Quaternion.LookRotation(direction.normalized, transform.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, _rotationSpeed * Time.deltaTime);
+
             transform.position += direction.normalized * Time.deltaTime * _speed;
 
             _anim.SetMovementAnimation(1);

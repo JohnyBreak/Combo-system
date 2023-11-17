@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private List<AttackSO> _attacks;
     [SerializeField] private PlayerAnimations _playerAnimations;
+    private PlayerInput _playerInput;
     private int _comboCounter;
     private bool _shouldContinueCombo = false;
     private bool _attackInProcess = false;
@@ -32,6 +34,11 @@ public class PlayerCombat : MonoBehaviour
         //    }
         //}
 
+    }
+
+    public void SetInput(PlayerInput playerInput) 
+    {
+        _playerInput = playerInput;
     }
 
     public void TryAttack() 
@@ -87,11 +94,12 @@ public class PlayerCombat : MonoBehaviour
         if (_playerAnimations.GetCurrentStateNormalizedTime() > _attacks[_comboCounter].NaturalExitTime
             && _playerAnimations.InAttackState())
         {
-            Debug.Log("NaturalExitTime");
+            //Debug.Log("NaturalExitTime");
             _playerAnimations.CrossfadeToMovementBlendTree();
             _comboCounter = 0;
             _attackInProcess = false;
-            GetComponent<PlayerMovement>().ToggleMovementOnAttackAnimation(true);
+            _playerInput.ToggleMovement(true);
+            //GetComponent<PlayerMovement>().ToggleMovementOnAttackAnimation(true);
             _shouldContinueCombo = false;
             return;
         }
@@ -100,18 +108,19 @@ public class PlayerCombat : MonoBehaviour
         if (_playerAnimations.IsNextStateIsAttack()) return;
 
 
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        //Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         if (_playerAnimations.GetCurrentStateNormalizedTime() > _attacks[_comboCounter].InputExitTime
             && _playerAnimations.InAttackState()
-            && input != Vector3.zero
+            //&& input != Vector3.zero
+            && _playerInput.MoveDirection != Vector3.zero
             && !_playerAnimations.IsInTransition())
         {
             _playerAnimations.CrossfadeToMovementBlendTree();
             _comboCounter = 0;
             _attackInProcess = false;
-
-            GetComponent<PlayerMovement>().ToggleMovementOnAttackAnimation(true);
+            _playerInput.ToggleMovement(true);
+            //GetComponent<PlayerMovement>().ToggleMovementOnAttackAnimation(true);
             _shouldContinueCombo = false;
             return;
         }

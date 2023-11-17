@@ -6,19 +6,27 @@ public class SMBBlockMoveInput : StateMachineBehaviour
     [MinMaxSlider(0, 1)] public Vector2 NormalizedMoveBlockTime;
 
     private int _attackHash = Animator.StringToHash("Attack");
-    private PlayerMovement _playerMovement;
+    //private PlayerMovement _playerMovement;
     private bool _shouldBlockMove = true;
     private bool _shouldLetMove = true;
     private bool _skip = false;
 
-    public void SetPlayerMovement(PlayerMovement playerMovement)
+    //public void SetPlayerMovement(PlayerMovement playerMovement)
+    //{
+    //    _playerMovement = playerMovement;
+    //}
+
+    private PlayerInput _playerInput;
+    public void SetPlayerInput(PlayerInput playerInput)
     {
-        _playerMovement = playerMovement;
+        _playerInput = playerInput;
+
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _playerMovement.ToggleMovementOnAttackAnimation(false);
+        _playerInput.ToggleMovement(false);
+        //_playerMovement.ToggleMovementOnAttackAnimation(false);
         _shouldBlockMove = true;
         _shouldLetMove = true;
         _skip = false;
@@ -38,7 +46,8 @@ public class SMBBlockMoveInput : StateMachineBehaviour
         {
             _shouldBlockMove = false;
             _shouldLetMove = true;
-            _playerMovement.ToggleMovementOnAttackAnimation(false);
+            _playerInput.ToggleMovement(false);
+            //_playerMovement.ToggleMovementOnAttackAnimation(false);
             return;
         }
 
@@ -48,7 +57,8 @@ public class SMBBlockMoveInput : StateMachineBehaviour
         {
             _shouldLetMove = false;
             _shouldBlockMove = true;
-            _playerMovement.ToggleMovementOnAttackAnimation(true);
+            _playerInput.ToggleMovement(true);
+            //_playerMovement.ToggleMovementOnAttackAnimation(true);
             return;
         }
     }
@@ -56,8 +66,8 @@ public class SMBBlockMoveInput : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (_skip) return;
-
-        _playerMovement.ToggleMovementOnAttackAnimation(true);
+        _playerInput.ToggleMovement(true);
+        //_playerMovement.ToggleMovementOnAttackAnimation(true);
         _shouldBlockMove = true;
         _shouldLetMove = true;
     }

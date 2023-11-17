@@ -6,15 +6,15 @@ public class PlayerRotation : MonoBehaviour
 
     private bool _canTurn = true;
 
-    private void Awake()
-    {
-        var behs = GetComponentInChildren<Animator>().GetBehaviours<SMBEnableTurn>();
+    //private void Awake()
+    //{
+    //    var behs = GetComponentInChildren<Animator>().GetBehaviours<SMBEnableTurn>();
 
-        foreach (var beh in behs)
-        {
-            beh.SetPlayerRotation(this);
-        }
-    }
+    //    foreach (var beh in behs)
+    //    {
+    //        beh.SetPlayerRotation(this);
+    //    }
+    //}
 
     public void ToggleTurnOnAttackAnimation(bool canTurn)
     {

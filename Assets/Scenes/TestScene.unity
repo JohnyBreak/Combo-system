@@ -873,12 +873,11 @@ GameObject:
   - component: {fileID: 1549340561}
   - component: {fileID: 1549340566}
   - component: {fileID: 1549340558}
+  - component: {fileID: 1549340571}
+  - component: {fileID: 1549340570}
   - component: {fileID: 1549340563}
-  - component: {fileID: 1549340564}
-  - component: {fileID: 1549340565}
   - component: {fileID: 1549340569}
   - component: {fileID: 1549340567}
-  - component: {fileID: 1549340568}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -938,34 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _anim: {fileID: 1549340569}
   _speed: 5
---- !u!114 &1549340564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549340557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fec86df6afe86a4cb0587f0b062f0e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _rotationSpeed: 1080
---- !u!114 &1549340565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549340557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2071e413106ae1a4dad957fae99e56af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!54 &1549340566
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1010,26 +982,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3c3fe3acad6acc34e9f23daec5267def, type: 2}
   - {fileID: 11400000, guid: 1da6b7ea0f8202f42b5aba597a36df0d, type: 2}
   _playerAnimations: {fileID: 1549340569}
---- !u!114 &1549340568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549340557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5ab6e74f987f5499275b4213ef56a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tagMask:
-    mask: 0
-    tags:
-    - Nothing
-  _arcTransform: {fileID: 204126694}
-  _angle: 29.8
-  _radius: 7.66
-  _color: {r: 1, g: 0.07212793, b: 0, a: 0.3254902}
 --- !u!114 &1549340569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +996,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 408785239}
   _smoothBlend: 0.1
+--- !u!114 &1549340570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549340557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15ef8a7a212e07499e2bf5820123ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _input: {fileID: 1549340571}
+  _movement: {fileID: 1549340563}
+  _combat: {fileID: 1549340567}
+--- !u!114 &1549340571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549340557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c961eabb7db54194bb9bf7324453fa7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1549827213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,6 +1158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _anim: {fileID: 0}
   _speed: 5
+  _rotationSpeed: 1080
 --- !u!1 &1568519205
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,17 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public event Action<bool> ToggleMovementEvent;
     private IControllableCharacter _controllable;
-    // Start is called before the first frame update
+    private Vector3 _moveDirection;
+    public Vector3 MoveDirection => _moveDirection;
+
     void Awake()
     {
         _controllable = GetComponent<IControllableCharacter>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ReadMoveInput();
@@ -20,8 +23,15 @@ public class PlayerInput : MonoBehaviour
 
     private void ReadMoveInput() 
     {
-        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        _controllable.Move(direction);
+        _moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+
+        _controllable.Move(_moveDirection);
+    }
+
+    public void ToggleMovement(bool canMove)
+    {
+        ToggleMovementEvent?.Invoke(canMove);
     }
 
     private void ReadLightAttack() 
