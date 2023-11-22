@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IControllableCharacter
     private void Awake()
     {
         _combat.SetInput(GetComponent<PlayerInput>());
-        var behs = GetComponentInChildren<Animator>().GetBehaviours<SMBEnableTurn>();
+        var behs = GetComponentInChildren<Animator>().GetBehaviours<SMBTurnBeforeAttack>();
 
         foreach (var beh in behs)
         {

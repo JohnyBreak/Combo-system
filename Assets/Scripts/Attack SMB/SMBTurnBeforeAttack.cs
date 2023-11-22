@@ -1,7 +1,7 @@
 //using GD.MinMaxSlider;
 using UnityEngine;
 
-public class SMBEnableTurn : StateMachineBehaviour
+public class SMBTurnBeforeAttack : StateMachineBehaviour
 {
     //[Tooltip("Normalized time when player can turn")]
     //[MinMaxSlider(0, 1)] public Vector2 TurnTime;
